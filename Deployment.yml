@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website2-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: website2
+  template:
+    metadata:
+      labels:
+        app: website2
+    spec:
+      containers:
+      - image: saxenasamarth/website2:latest
+        name: website2
+        resources:
+            limits:
+              cpu: 100m
+              memory: 200Mi
+            requests:
+              cpu: 100m
+              memory: 200Mi
+        ports:
+        - containerPort: 80
